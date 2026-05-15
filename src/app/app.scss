@@ -1,0 +1,140 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  color: var(--text-color);
+  font-family:
+    Inter,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+.app-shell {
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, var(--background-accent), transparent 34rem),
+    var(--page-background);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.theme-panel {
+  background: var(--panel-background);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px var(--panel-shadow);
+  max-width: 42rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.eyebrow {
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--muted-text);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.theme-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+button {
+  background: var(--button-background);
+  border: 1px solid var(--button-border);
+  border-radius: 8px;
+  color: var(--button-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 2.75rem;
+  padding: 0.7rem 1rem;
+}
+
+button:hover {
+  border-color: var(--accent-color);
+}
+
+button.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--accent-text);
+}
+
+.preview-card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--card-text);
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+}
+
+.preview-label {
+  color: var(--accent-color);
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.preview-card h2 {
+  font-size: 1.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.preview-card p {
+  color: var(--card-muted-text);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.current-theme {
+  color: var(--muted-text);
+  margin-bottom: 0;
+}
+
+.current-theme strong {
+  color: var(--text-color);
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    padding: 1rem;
+  }
+
+  .theme-panel {
+    padding: 1.25rem;
+  }
+
+  .theme-actions {
+    flex-direction: column;
+  }
+}

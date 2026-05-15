@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  --page-background: #f7efe4;
+  --background-accent: #b7e4c7;
+  --panel-background: #fffaf3;
+  --panel-border: #ead8c4;
+  --panel-shadow: rgb(94 68 42 / 18%);
+  --text-color: #25312b;
+  --muted-text: #647067;
+  --accent-color: #2f7d57;
+  --accent-text: #ffffff;
+  --button-background: #ffffff;
+  --button-border: #d7c6b3;
+  --button-text: #25312b;
+  --card-background: #edf8ef;
+  --card-border: #b9dfc1;
+  --card-text: #173d2b;
+  --card-muted-text: #4d6b5d;
+  background: var(--page-background);
+}
+
+body.theme-dark {
+  --page-background: #111827;
+  --background-accent: #4f46e5;
+  --panel-background: #1f2937;
+  --panel-border: #374151;
+  --panel-shadow: rgb(0 0 0 / 42%);
+  --text-color: #f9fafb;
+  --muted-text: #cbd5e1;
+  --accent-color: #38bdf8;
+  --accent-text: #08111f;
+  --button-background: #111827;
+  --button-border: #4b5563;
+  --button-text: #f9fafb;
+  --card-background: #0f172a;
+  --card-border: #38bdf8;
+  --card-text: #e0f2fe;
+  --card-muted-text: #a7c9da;
+}
+
+body.theme-system {
+  --page-background: #eef2ff;
+  --background-accent: #facc15;
+  --panel-background: #ffffff;
+  --panel-border: #c7d2fe;
+  --panel-shadow: rgb(59 72 128 / 22%);
+  --text-color: #27344d;
+  --muted-text: #5d6b87;
+  --accent-color: #4f46e5;
+  --accent-text: #ffffff;
+  --button-background: #ffffff;
+  --button-border: #b8c0e6;
+  --button-text: #27344d;
+  --card-background: #fff7c2;
+  --card-border: #eab308;
+  --card-text: #48380a;
+  --card-muted-text: #766522;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.theme-system {
+    --page-background: #18181b;
+    --background-accent: #facc15;
+    --panel-background: #27272a;
+    --panel-border: #52525b;
+    --panel-shadow: rgb(0 0 0 / 45%);
+    --text-color: #fafafa;
+    --muted-text: #d4d4d8;
+    --accent-color: #facc15;
+    --accent-text: #27272a;
+    --button-background: #18181b;
+    --button-border: #71717a;
+    --button-text: #fafafa;
+    --card-background: #3f3f46;
+    --card-border: #facc15;
+    --card-text: #fff7d1;
+    --card-muted-text: #f4e7a2;
+  }
+}
