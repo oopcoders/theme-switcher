@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch: # Allows manual deployment
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,17 +20,16 @@ jobs:
           node-version: 24
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Angular App
         run: npm run build -- --configuration=production
 
-      # ✅ Deploy to FTP Server
       - name: Deploy via FTP
         uses: SamKirkland/ftp-deploy-action@v4.3.4
         with:
-          server: ${{ secrets.FTP_URL}}
+          server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/theme-switcher/browser/
-          server-dir: / 
+          server-dir: /
