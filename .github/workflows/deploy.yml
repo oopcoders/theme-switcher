@@ -1,34 +1,36 @@
-name: Deploy To Server
+name: Deploy to Server
 
 on:
   push:
     branches:
       - master
+  workflow_dispatch: # Allows manual deployment
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Build React App
-        run: npm run build
+      - name: Build Angular App
+        run: npm run build -- --configuration=production
 
-      - name: Deploy to FTP Server
+      # ✅ Deploy to FTP Server
+      - name: Deploy via FTP
         uses: SamKirkland/ftp-deploy-action@v4.3.4
         with:
-          server: ${{ secrets.FTP_HOST }}
+          server: ${{ secrets.FTP_URL}}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: /
+          local-dir: ./dist/theme-switcher/browser/
+          server-dir: / 
