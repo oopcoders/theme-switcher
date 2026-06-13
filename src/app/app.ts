@@ -25,7 +25,7 @@ export class App {
     this.applyTheme(theme);
 
     if (this.isBrowser) {
-      localStorage.setItem(this.storageKey, theme === 'dark' ? 'light' : theme);
+      localStorage.setItem(this.storageKey, theme);
     }
   }
 

@@ -100,6 +100,17 @@ describe('App', () => {
     expect(localStorage.getItem(storageKey)).toBe('dark');
   });
 
+  it('should restore the saved dark theme after recreating the app', () => {
+    localStorage.setItem(storageKey, 'dark');
+
+    const { compiled } = setupApp();
+
+    expect(currentThemeText(compiled)).toContain('Dark');
+    expect(document.body.classList.contains('theme-dark')).toBe(true);
+    expect(document.body.classList.contains('theme-system')).toBe(false);
+    expect(document.body.classList.contains('theme-light')).toBe(false);
+  });
+
   it('should update the body class when the theme changes', () => {
     const { compiled, fixture } = setupApp();
 
