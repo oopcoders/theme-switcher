@@ -59,11 +59,16 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
+.theme-controls {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .theme-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
 }
 
 button {

@@ -9,80 +9,138 @@ body {
 }
 
 body {
-  --page-background: #f7efe4;
-  --background-accent: #b7e4c7;
-  --panel-background: #fffaf3;
-  --panel-border: #ead8c4;
-  --panel-shadow: rgb(94 68 42 / 18%);
-  --text-color: #25312b;
-  --muted-text: #647067;
-  --accent-color: #2f7d57;
+  background: var(--page-background);
+}
+
+body.theme-light,
+body.theme-system {
+  --page-background: #f8fafc;
+  --panel-background: #ffffff;
+  --panel-border: #dbe4ee;
+  --panel-shadow: rgb(63 76 92 / 18%);
+  --text-color: #1f2937;
+  --muted-text: #5f6f82;
   --accent-text: #ffffff;
   --button-background: #ffffff;
-  --button-border: #d7c6b3;
-  --button-text: #25312b;
-  --card-background: #edf8ef;
-  --card-border: #b9dfc1;
-  --card-text: #173d2b;
-  --card-muted-text: #4d6b5d;
-  background: var(--page-background);
+  --button-border: #cbd5e1;
+  --button-text: #243041;
 }
 
 body.theme-dark {
   --page-background: #111827;
-  --background-accent: #4f46e5;
   --panel-background: #1f2937;
   --panel-border: #374151;
   --panel-shadow: rgb(0 0 0 / 42%);
   --text-color: #f9fafb;
   --muted-text: #cbd5e1;
-  --accent-color: #38bdf8;
   --accent-text: #08111f;
   --button-background: #111827;
   --button-border: #4b5563;
   --button-text: #f9fafb;
+}
+
+body.theme-system {
+  --page-background: #eef2ff;
+  --panel-background: #ffffff;
+  --panel-border: #c7d2fe;
+  --panel-shadow: rgb(59 72 128 / 22%);
+  --text-color: #27344d;
+  --muted-text: #5d6b87;
+  --button-border: #b8c0e6;
+}
+
+body.theme-blue {
+  --accent-color: #2563eb;
+  --background-accent: #bfdbfe;
+  --card-background: #eff6ff;
+  --card-border: #93c5fd;
+  --card-text: #172554;
+  --card-muted-text: #315b96;
+}
+
+body.theme-red {
+  --accent-color: #dc2626;
+  --background-accent: #fecaca;
+  --card-background: #fff1f2;
+  --card-border: #fca5a5;
+  --card-text: #7f1d1d;
+  --card-muted-text: #9f3838;
+}
+
+body.theme-green {
+  --accent-color: #15803d;
+  --background-accent: #bbf7d0;
+  --card-background: #f0fdf4;
+  --card-border: #86efac;
+  --card-text: #14532d;
+  --card-muted-text: #36734c;
+}
+
+body.theme-dark.theme-blue {
+  --accent-color: #38bdf8;
+  --background-accent: #1d4ed8;
   --card-background: #0f172a;
   --card-border: #38bdf8;
   --card-text: #e0f2fe;
   --card-muted-text: #a7c9da;
 }
 
-body.theme-system {
-  --page-background: #eef2ff;
-  --background-accent: #facc15;
-  --panel-background: #ffffff;
-  --panel-border: #c7d2fe;
-  --panel-shadow: rgb(59 72 128 / 22%);
-  --text-color: #27344d;
-  --muted-text: #5d6b87;
-  --accent-color: #4f46e5;
-  --accent-text: #ffffff;
-  --button-background: #ffffff;
-  --button-border: #b8c0e6;
-  --button-text: #27344d;
-  --card-background: #fff7c2;
-  --card-border: #eab308;
-  --card-text: #48380a;
-  --card-muted-text: #766522;
+body.theme-dark.theme-red {
+  --accent-color: #fb7185;
+  --background-accent: #9f1239;
+  --card-background: #2a1118;
+  --card-border: #fb7185;
+  --card-text: #ffe4e6;
+  --card-muted-text: #f4a7b5;
+}
+
+body.theme-dark.theme-green {
+  --accent-color: #4ade80;
+  --background-accent: #166534;
+  --card-background: #0f2418;
+  --card-border: #4ade80;
+  --card-text: #dcfce7;
+  --card-muted-text: #a7d7b6;
 }
 
 @media (prefers-color-scheme: dark) {
   body.theme-system {
     --page-background: #18181b;
-    --background-accent: #facc15;
     --panel-background: #27272a;
     --panel-border: #52525b;
     --panel-shadow: rgb(0 0 0 / 45%);
     --text-color: #fafafa;
     --muted-text: #d4d4d8;
-    --accent-color: #facc15;
     --accent-text: #27272a;
     --button-background: #18181b;
     --button-border: #71717a;
     --button-text: #fafafa;
-    --card-background: #3f3f46;
-    --card-border: #facc15;
-    --card-text: #fff7d1;
-    --card-muted-text: #f4e7a2;
+  }
+
+  body.theme-system.theme-blue {
+    --accent-color: #38bdf8;
+    --background-accent: #1d4ed8;
+    --card-background: #0f172a;
+    --card-border: #38bdf8;
+    --card-text: #e0f2fe;
+    --card-muted-text: #a7c9da;
+  }
+
+  body.theme-system.theme-red {
+    --accent-color: #fb7185;
+    --background-accent: #9f1239;
+    --card-background: #2a1118;
+    --card-border: #fb7185;
+    --card-text: #ffe4e6;
+    --card-muted-text: #f4a7b5;
+  }
+
+  body.theme-system.theme-green {
+    --accent-color: #4ade80;
+    --background-accent: #166534;
+    --card-background: #0f2418;
+    --card-border: #4ade80;
+    --card-text: #dcfce7;
+    --card-muted-text: #a7d7b6;
   }
 }

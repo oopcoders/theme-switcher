@@ -2,6 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID, signal } from '@angular/core';
 
 type ThemeMode = 'light' | 'dark' | 'system';
+type ThemeColor = 'blue' | 'red' | 'green';
 
 @Component({
   selector: 'app-root',
@@ -11,41 +12,68 @@ type ThemeMode = 'light' | 'dark' | 'system';
 export class App {
   private readonly document = inject(DOCUMENT);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  private readonly storageKey = 'theme-switcher-mode';
+  private readonly modeStorageKey = 'theme-switcher-mode';
+  private readonly colorStorageKey = 'theme-switcher-color';
 
   protected readonly title = 'Theme Switcher Demo';
-  protected readonly selectedTheme = signal<ThemeMode>(this.getSavedTheme());
+  protected readonly selectedMode = signal<ThemeMode>(this.getSavedMode());
+  protected readonly selectedColor = signal<ThemeColor>(this.getSavedColor());
 
   constructor() {
-    this.applyTheme(this.selectedTheme());
+    this.applyTheme();
   }
 
-  protected setTheme(theme: ThemeMode) {
-    this.selectedTheme.set(theme);
-    this.applyTheme(theme);
+  protected setMode(mode: ThemeMode) {
+    this.selectedMode.set(mode);
+    this.applyTheme();
 
     if (this.isBrowser) {
-      localStorage.setItem(this.storageKey, theme === 'dark' ? 'light' : theme);
+      localStorage.setItem(this.modeStorageKey, mode);
+    }
+  }
+
+  protected setColor(color: ThemeColor) {
+    this.selectedColor.set(color);
+    this.applyTheme();
+
+    if (this.isBrowser) {
+      localStorage.setItem(this.colorStorageKey, color);
     }
   }
 
   protected themeLabel() {
-    return this.selectedTheme()[0].toUpperCase() + this.selectedTheme().slice(1);
+    return `${this.toLabel(this.selectedMode())} ${this.toLabel(this.selectedColor())}`;
   }
 
-  private getSavedTheme(): ThemeMode {
+  private getSavedMode(): ThemeMode {
     if (!this.isBrowser) {
       return 'system';
     }
 
-    const savedTheme = localStorage.getItem(this.storageKey);
-    return savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'system'
-      ? savedTheme
+    const savedMode = localStorage.getItem(this.modeStorageKey);
+    return savedMode === 'light' || savedMode === 'dark' || savedMode === 'system'
+      ? savedMode
       : 'system';
   }
 
-  private applyTheme(theme: ThemeMode) {
+  private getSavedColor(): ThemeColor {
+    if (!this.isBrowser) {
+      return 'blue';
+    }
+
+    const savedColor = localStorage.getItem(this.colorStorageKey);
+    return savedColor === 'blue' || savedColor === 'red' || savedColor === 'green'
+      ? savedColor
+      : 'blue';
+  }
+
+  private applyTheme() {
     this.document.body.classList.remove('theme-light', 'theme-dark', 'theme-system');
-    this.document.body.classList.add(`theme-${theme}`);
+    this.document.body.classList.remove('theme-blue', 'theme-red', 'theme-green');
+    this.document.body.classList.add(`theme-${this.selectedMode()}`, `theme-${this.selectedColor()}`);
+  }
+
+  private toLabel(value: ThemeMode | ThemeColor) {
+    return value[0].toUpperCase() + value.slice(1);
   }
 }
