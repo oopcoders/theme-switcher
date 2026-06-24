@@ -3,39 +3,65 @@
     <p class="eyebrow">Angular basics</p>
     <h1 id="app-title">{{ title }}</h1>
     <p class="description">
-      Pick a theme and refresh the page. Your choice stays saved with localStorage.
+      Pick a mode and color, then refresh the page. Your choice stays saved with localStorage.
     </p>
 
-    <div class="theme-actions" aria-label="Theme options">
-      <button
-        type="button"
-        [class.active]="selectedTheme() === 'light'"
-        (click)="setTheme('light')"
-      >
-        Light Mode
-      </button>
-      <button
-        type="button"
-        [class.active]="selectedTheme() === 'dark'"
-        (click)="setTheme('dark')"
-      >
-        Dark Mode
-      </button>
-      <button
-        type="button"
-        [class.active]="selectedTheme() === 'system'"
-        (click)="setTheme('system')"
-      >
-        System Mode
-      </button>
+    <div class="theme-controls">
+      <div class="theme-actions" aria-label="Mode options">
+        <button
+          type="button"
+          [class.active]="selectedMode() === 'light'"
+          (click)="setMode('light')"
+        >
+          Light Mode
+        </button>
+        <button
+          type="button"
+          [class.active]="selectedMode() === 'dark'"
+          (click)="setMode('dark')"
+        >
+          Dark Mode
+        </button>
+        <button
+          type="button"
+          [class.active]="selectedMode() === 'system'"
+          (click)="setMode('system')"
+        >
+          System Mode
+        </button>
+      </div>
+
+      <div class="theme-actions" aria-label="Color options">
+        <button
+          type="button"
+          [class.active]="selectedColor() === 'blue'"
+          (click)="setColor('blue')"
+        >
+          Blue
+        </button>
+        <button
+          type="button"
+          [class.active]="selectedColor() === 'red'"
+          (click)="setColor('red')"
+        >
+          Red
+        </button>
+        <button
+          type="button"
+          [class.active]="selectedColor() === 'green'"
+          (click)="setColor('green')"
+        >
+          Green
+        </button>
+      </div>
     </div>
 
     <article class="preview-card">
       <span class="preview-label">Preview card</span>
       <h2>{{ themeLabel() }} theme selected</h2>
       <p>
-        The page colors come from a class on the document body, so the whole app can react to
-        one small setting.
+        The page colors come from mode and color classes on the document body, so the whole app can
+        react to a small pair of settings.
       </p>
     </article>
 
